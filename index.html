@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pick A Random Captain</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+  </head>
+  <body>
+    <div class="container flex justify-center align-center">
+      <main>
+        <section id="winnerSection" class="flex flex-column">
+          <label for="newCaptain">Siapakah <em>captain</em> selanjutnya?</label>
+          <input type="text" id="newCaptain" readonly />
+        </section>
+      </main>
+      <aside>
+        <fieldset>
+          <legend><h2>Pick A Captain</h2></legend>
+          <label for="listNames">Masukkan nama</label>
+          <textarea
+            name="list-names"
+            id="listNames"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <button id="pickACaptainButton">Pick A Captain</button>
+        </fieldset>
+      </aside>
+    </div>
+
+    <script src="./assets/scripts/script.js"></script>
+  </body>
+</html>
