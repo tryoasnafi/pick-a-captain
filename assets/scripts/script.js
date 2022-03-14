@@ -1,28 +1,43 @@
 document.addEventListener("DOMContentLoaded", (e) => {
-    e.preventDefault()
+  e.preventDefault()
 })
 
 // Generate random index
-const randomIndex = (length) => Math.floor(Math.random() * length);
+const randomIndex = (length) => Math.floor(Math.random() * length)
+const pickACaptainButton = document.getElementById("pickACaptainButton")
+const listNameEl = document.getElementById("listNames")
 
-let newCaptain = "";
+let newCaptain = ""
 
-// Event listener pick captain button
-const pickACaptainButton = document.getElementById('pickACaptainButton')
-pickACaptainButton.addEventListener("click", (e) => {
-    const listNameEl = document.getElementById('listNames');
-    const newCaptainEl = document.getElementById('newCaptain');
-    const names = listNameEl.value.trim().split('\n');
+const loadSavedListCaptain = () => {
+  const captain = localStorage.getItem("captain")
+  if (captain === null) {
+    newCaptain = ""
+  } else {
+    listNameEl.textContent = JSON.parse(captain)
+  }
+}
 
-    newCaptain = names[randomIndex(names.length)]
+loadSavedListCaptain()
 
-    // Clear box value before append a new one
-    newCaptainEl.value = ''
-
-    // Append winner
-    setTimeout(() => {
-        newCaptainEl.value = newCaptain
-    }, 1000)
+listNameEl.addEventListener("change", () => {
+  newCaptain = JSON.stringify(listNameEl.value)
+  localStorage.setItem("captain", newCaptain)
 })
 
+pickACaptainButton.addEventListener("click", (e) => {
+  const newCaptainEl = document.getElementById("newCaptain")
+  const names = listNameEl.value.trim().split("\n")
 
+  newCaptain = names[randomIndex(names.length)]
+  newCaptainEl.value = ""
+
+  const showAnimatedResult = setInterval(() => {
+    newCaptainEl.value = names[randomIndex(names.length)]
+
+    if (newCaptainEl.value === newCaptain) {
+      newCaptainEl.value = newCaptain
+      clearInterval(showAnimatedResult)
+    }
+  }, 100)
+})
