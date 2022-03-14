@@ -20,12 +20,15 @@ textarea {
   padding: 8px;
   margin: 8px 0;
   width: 100%;
-  resize: none;
 }
 
 fieldset,
 #winnerSection {
   max-width: 400px;
+}
+
+#listNames {
+  display: bloc;
 }
 
 #newCaptain {
@@ -44,8 +47,8 @@ fieldset,
 }
 
 #pickACaptainButton:hover {
-  background-color: rgba(5, 91, 92, 0.9);
-  border: 4px solid rgba(5, 91, 92, 0.5);
+  background-color: darkcyan;
+  border-color: darkcyan;
   transition: all 0.2s;
 }
 
