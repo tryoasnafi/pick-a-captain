@@ -32,7 +32,12 @@ pickACaptainButton.addEventListener("click", (e) => {
   newCaptain = names[randomIndex(names.length)]
   newCaptainEl.value = ""
 
-  setTimeout(() => {
-    newCaptainEl.value = newCaptain
-  }, 1000)
+  const showAnimatedResult = setInterval(() => {
+    newCaptainEl.value = names[randomIndex(names.length)]
+
+    if (newCaptainEl.value === newCaptain) {
+      newCaptainEl.value = newCaptain
+      clearInterval(showAnimatedResult)
+    }
+  }, 100)
 })
