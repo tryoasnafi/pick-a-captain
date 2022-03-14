@@ -9,7 +9,7 @@ const listNameEl = document.getElementById("listNames")
 
 let newCaptain = ""
 
-const LoadSavedListCaptain = () => {
+const loadSavedListCaptain = () => {
   const captain = localStorage.getItem("captain")
   if (captain === null) {
     newCaptain = ""
@@ -18,7 +18,7 @@ const LoadSavedListCaptain = () => {
   }
 }
 
-LoadSavedListCaptain()
+loadSavedListCaptain()
 
 listNameEl.addEventListener("change", () => {
   newCaptain = JSON.stringify(listNameEl.value)
