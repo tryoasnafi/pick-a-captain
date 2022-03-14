@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 // Generate random index
 const randomIndex = (length) => Math.floor(Math.random() * length)
+const pickACaptainButton = document.getElementById("pickACaptainButton")
 const listNameEl = document.getElementById("listNames")
 
 let newCaptain = ""
@@ -24,18 +25,13 @@ listNameEl.addEventListener("change", () => {
   localStorage.setItem("captain", newCaptain)
 })
 
-// Event listener pick captain button
-const pickACaptainButton = document.getElementById("pickACaptainButton")
 pickACaptainButton.addEventListener("click", (e) => {
   const newCaptainEl = document.getElementById("newCaptain")
   const names = listNameEl.value.trim().split("\n")
 
   newCaptain = names[randomIndex(names.length)]
-
-  // Clear box value before append a new one
   newCaptainEl.value = ""
 
-  // Append winner
   setTimeout(() => {
     newCaptainEl.value = newCaptain
   }, 1000)
